@@ -1,0 +1,437 @@
+/* ==========================================================================
+   Estilos de la feature "simulación"
+   ========================================================================== */
+
+/* Layout general -------------------------------------------------------- */
+.app {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.app__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 2px solid var(--petroleo);
+  flex-wrap: wrap;
+}
+.app__title {
+  font-size: 1.9rem;
+  line-height: 1.05;
+}
+.app__title small {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-weight: 500;
+  margin-top: 0.35rem;
+}
+.app__secado {
+  text-align: right;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+.app__secado strong {
+  font-family: var(--font-mono);
+  font-size: 1.35rem;
+  color: var(--cuero);
+  display: block;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+@media (max-width: 1080px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.col-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+/* Formulario de parámetros --------------------------------------------- */
+.params {
+  padding: 1rem 1.1rem 1.2rem;
+  position: sticky;
+  top: 1rem;
+}
+.params__group {
+  margin-top: 1rem;
+}
+.params__group-title {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 0.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px dashed var(--line-strong);
+}
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.45rem;
+}
+.field label {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+.field input[type='number'] {
+  width: 92px;
+  padding: 0.32rem 0.5rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  text-align: right;
+  background: var(--surface-2);
+  color: var(--ink);
+}
+.field input:focus {
+  outline: 2px solid var(--cuero-soft);
+  outline-offset: -1px;
+  background: #fff;
+}
+.field input[type='checkbox'] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--cuero);
+}
+.params__actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.1rem;
+}
+.params__actions .btn {
+  flex: 1;
+}
+
+/* Métricas -------------------------------------------------------------- */
+.metricas {
+  padding: 1rem 1.1rem;
+}
+.metricas__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  gap: 0.6rem;
+  margin-top: 0.9rem;
+}
+.metric {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.7rem;
+}
+.metric__valor {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.metric__label {
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+  margin-top: 0.1rem;
+}
+.metric--acc {
+  border-left: 3px solid var(--cuero);
+}
+.corte-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: var(--cuero-wash);
+  color: var(--cuero);
+  border: 1px solid var(--cuero-soft);
+}
+
+/* Controles de la ventana j / i ---------------------------------------- */
+.ventana-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.7rem 1.1rem;
+  background: var(--surface-3);
+  border-bottom: 1px solid var(--line);
+}
+.ventana-bar .field {
+  margin: 0;
+}
+.ventana-bar .field input {
+  width: 80px;
+}
+.ventana-info {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--ink-soft);
+}
+
+/* Tabla del vector de estado ------------------------------------------- */
+.tabla-wrap {
+  overflow: auto;
+  max-height: 70vh;
+  border-top: 1px solid var(--line);
+}
+table.vector {
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+table.vector th,
+table.vector td {
+  padding: 0.34rem 0.6rem;
+  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  text-align: right;
+}
+table.vector thead th {
+  position: sticky;
+  top: 0;
+  background: var(--petroleo);
+  color: #f4f1ea;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.7rem;
+  z-index: 3;
+  text-align: right;
+  border-right: 1px solid var(--petroleo-soft);
+}
+table.vector thead tr.grupos th {
+  top: 0;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: #16302f;
+  color: var(--cuero-soft);
+  text-align: center;
+}
+table.vector thead tr.cols th {
+  top: 27px;
+}
+table.vector tbody td.dato {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+table.vector tbody td.rnd {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--cuero);
+  background: var(--cuero-wash);
+}
+table.vector tbody td.txt {
+  text-align: left;
+  font-family: var(--font-body);
+}
+table.vector tbody tr:nth-child(even) td {
+  background: var(--surface-2);
+}
+table.vector tbody tr:nth-child(even) td.rnd {
+  background: #f1e1d3;
+}
+table.vector tbody tr:hover td {
+  background: #f0ece3;
+}
+table.vector tbody tr.sel td {
+  background: #e8efe9 !important;
+  box-shadow: inset 0 0 0 9999px rgba(42, 107, 110, 0.06);
+}
+table.vector tbody tr.corte td {
+  background: var(--cuero-wash) !important;
+  font-weight: 600;
+}
+table.vector tbody tr {
+  cursor: pointer;
+}
+
+/* primera columna (fila) congelada */
+table.vector th.sticky-col,
+table.vector td.sticky-col {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  border-right: 2px solid var(--line-strong);
+}
+table.vector td.sticky-col {
+  background: var(--surface);
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+table.vector thead th.sticky-col {
+  z-index: 4;
+}
+
+/* Chips de estado del zapatero */
+.estado-chip {
+  display: inline-block;
+  padding: 0.08rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #fff;
+}
+.estado-chip.Atendiendo {
+  background: var(--atendiendo);
+}
+.estado-chip.Reparando {
+  background: var(--reparando);
+}
+.estado-chip.Libre {
+  background: var(--libre);
+}
+
+/* Detalle de objetos temporales ---------------------------------------- */
+.detalle {
+  padding: 1rem 1.1rem 1.2rem;
+}
+.detalle__head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+.detalle__reloj {
+  font-family: var(--font-mono);
+  color: var(--cuero);
+  font-weight: 600;
+}
+.objetos-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
+}
+@media (max-width: 720px) {
+  .objetos-cols {
+    grid-template-columns: 1fr;
+  }
+}
+.objetos-col h4 {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 0.5rem;
+}
+.obj-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+.obj-chip {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.55rem;
+  min-width: 88px;
+  background: var(--surface-2);
+}
+.obj-chip__id {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.78rem;
+}
+.obj-chip__meta {
+  font-size: 0.68rem;
+  color: var(--ink-soft);
+  font-family: var(--font-mono);
+}
+.obj-chip__estado {
+  display: inline-block;
+  margin-top: 0.25rem;
+  font-size: 0.64rem;
+  font-weight: 600;
+  padding: 0.05rem 0.35rem;
+  border-radius: 4px;
+  width: fit-content;
+}
+.est-EA { background: #fdeccf; color: #8a5b07; }
+.est-SA { background: #f7d9b8; color: #8f4a23; }
+.est-ER { background: #d6e8e8; color: #1e3a3a; }
+.est-SR { background: #b9dcdc; color: #14403f; }
+.est-RI { background: #f3d3cd; color: #8a261c; }
+.est-LR { background: #dfe7d9; color: #3a5a32; }
+.detalle__vacio {
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+/* Tabla Runge-Kutta ----------------------------------------------------- */
+.rk {
+  padding: 1rem 1.1rem 1.2rem;
+}
+.rk__resumen {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin: 0.8rem 0 1rem;
+  font-size: 0.82rem;
+}
+.rk__resumen b {
+  font-family: var(--font-mono);
+  color: var(--cuero);
+}
+table.rk-table {
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  width: 100%;
+}
+table.rk-table th,
+table.rk-table td {
+  border: 1px solid var(--line);
+  padding: 0.28rem 0.5rem;
+  text-align: right;
+}
+table.rk-table thead th {
+  background: var(--surface-3);
+  color: var(--petroleo);
+  font-weight: 600;
+}
+table.rk-table tbody tr:last-child td {
+  background: var(--cuero-wash);
+  font-weight: 600;
+}
+
+.placeholder {
+  padding: 3rem 1rem;
+  text-align: center;
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+details.rk-details > summary {
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--petroleo);
+  list-style: revert;
+}
